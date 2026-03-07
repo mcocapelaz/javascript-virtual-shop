@@ -1,4 +1,3 @@
-/* ---- RESET & BASE ---- */
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +10,6 @@ body {
   color: #333;
 }
 
-/* ---- HEADER ---- */
 .header {
   display: flex;
   align-items: center;
@@ -27,7 +25,6 @@ body {
   font-size: 1.5rem;
 }
 
-/* ---- SEARCH ---- */
 .search {
   display: flex;
   gap: 8px;
@@ -57,7 +54,6 @@ body {
   background-color: #d4920a;
 }
 
-/* ---- CART ICON ---- */
 .cart-icon {
   background-color: #f0a500;
   border: none;
@@ -78,20 +74,17 @@ body {
   margin-left: 6px;
 }
 
-/* ---- MAIN ---- */
 .main {
   padding: 32px;
   position: relative;
 }
 
-/* ---- PRODUCTS GRID ---- */
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 24px;
 }
 
-/* ---- PRODUCT CARD ---- */
 .card {
   background-color: white;
   border-radius: 10px;
@@ -135,7 +128,6 @@ body {
   background-color: #444;
 }
 
-/* ---- CART SIDEBAR ---- */
 .cart {
   position: fixed;
   top: 0;
