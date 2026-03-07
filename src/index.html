@@ -6,17 +6,53 @@
     <title>1.N Título</title>
     <link
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <link rel="stylesheet" href="./scss/main.scss" />
     <link rel="icon" href="/images/favicon.png" />
   </head>
 
   <body>
-    <!-- Cambia este HTML por el tuyo -->
+
+    <!-- HEADER -->
+
     <header class="header">
-      <h1 class="title">1.N Título</h1>
+      <h1 class="title">Online gift shop</h1>
+
+      <!-- SEARCH BAR -->
+
+      <div class="search">
+        <input
+          type="text"
+          id="search-input"
+          class="search__input"
+          placeholder="What do you want to buy today?" />
+        <button id="search-btn" class="search__button">Search</button>
+      </div>
     </header>
-    <main class="main"></main>
+
+    <!-- MAIN -->
+
+    <main class="main">
+      <section class="products" id="product-list">
+        <!-- Products inserted by JS -->
+      </section>
+
+      <!-- CART SIDEBAR -->
+
+      <aside class="cart" id="cart" hidden>
+        <h2 class="cart__title">Your cart</h2>
+        <ul class="cart__list" id="cart-list">
+          <!-- Cart items JS-->
+        </ul>
+
+        <p class="cart__total">Total: <span id="cart-total">0 €</span></p>
+
+        <button class="cart__checkout">Checkout</button>
+        <button class="cart__close">Close x</button>
+      </aside>
+
+    </main>
+    <script src="main.js"></script>
+
   </body>
 </html>
