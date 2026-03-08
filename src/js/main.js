@@ -106,6 +106,21 @@ function renderCart() {
   totalElement.innerText = total.toFixed(2);
 }
 
+// ELIMINAR ITEMS DEL CARRITO 
+
+function removeFromCart (index) {
+  cart.splice(index, 1)
+  renderCart();
+  console.log("Item removed. Cart updated")
+}; 
+
+
+
+
+
+
+
+
 //EVENT LISTENERS
 
 searchBtn.addEventListener("click", handleSearch);
