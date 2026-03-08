@@ -1,19 +1,18 @@
 "use strict";
 
-// 1. Variables globales (el array de productos, referencias al DOM...)
-// 2. Función fetchProducts → llama a la API
-// 3. Función renderProducts → pinta los productos en el HTML
-// 4. Función filterProducts → filtra por búsqueda
-// 5. Event listeners → los clicks de botones
-// 6. Llamada inicial → arranca todo al cargar la página
-
-// SECCIÓN DE QUERY-SELECTOR
-// Éstos son los elementos que nos traemos de la página HTML y usamos en el código
+// VARIABLES
 
 const searchBtn = document.getElementById("search-btn");
 const searchInput = document.getElementById("search-input");
 const productList = document.getElementById("product-list");
+const cartSideBar = document.getElementById("cart");
+
+const closeCartBtn = document.getElementById("close-cart");
+
+let cart = [];
 let allProducts = [];
+
+// LLAMAR A LA API
 
 const fetchProducts = async () => {
   try {
@@ -33,6 +32,8 @@ const fetchProducts = async () => {
 };
 fetchProducts();
 
+// PINTAR PRODUCTOS EN EL HTML
+
 function renderProducts(products) {
   productList.innerHTML = "";
   products.forEach((product) => {
@@ -45,12 +46,18 @@ function renderProducts(products) {
 <p class="card__price">${product.price}</p>
 <button class="card__button" data-id= "${product.id}">Add to cart
 </button>
-
 `;
 
     productList.appendChild(card);
+    const btn = card.querySelector(".card__button");
+    btn.addEventListener("click", () => {
+      const id = parseInt(btn.getAttribute("data-id"));
+      addToCart(id);
+    });
   });
 }
+
+// BUSCADOR DE PRODUCTOS
 
 function filterProducts(query) {
   const filtered = allProducts.filter((product) => {
@@ -61,32 +68,51 @@ function filterProducts(query) {
   renderProducts(filtered);
 }
 
-// SECCIÓN DE FUNCIONES
-// Éstas son funciones:
-//   - con código auxiliar
-//   - con código que usaremos en los eventos
-//   - para pintar (render) en la página.
-
-// SECCIÓN DE FUNCIONES DE EVENTOS
-// Aquí van las funciones handler/manejadoras de eventos
-
-
 function handleSearch() {
-const query=searchInput.value.toLowerCase() ; 
-filterProducts (query); 
+  const query = searchInput.value.toLowerCase();
+  filterProducts(query);
 }
 
-searchBtn.addEventListener("click", handleSearch); 
+//AÑADIR AL CARRITO
+
+function addToCart(productId) {
+  const product = allProducts.find((p) => p.id === productId);
+  if (product) {
+    cart.push(product);
+    console.log("Product added: ", product.title);
+    renderCart();
+  }
+}
+
+// MOSTRAR CARRITO
+
+function renderCart() {
+  const cartList = document.getElementById("cart-list");
+  const totalElement = document.getElementById("cart-total");
+
+  cartList.innerHTML = "";
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    const cartItem = document.createElement("li");
+    cartItem.classList.add("cart__item");
+    cartItem.innerHTML = `
+<p>${item.title} - ${item.price} €</p>
+<button onclick="removeFromCart(${index})">X</button>
+`;
+    cartList.appendChild(cartItem);
+    total += item.price;
+  });
+  totalElement.innerText = total.toFixed(2);
+}
+
+//EVENT LISTENERS
+
+searchBtn.addEventListener("click", handleSearch);
 searchInput.addEventListener("input", handleSearch);
 
-// SECCIÓN DE EVENTOS
-// Éstos son los eventos a los que reacciona la página
-// Los más comunes son: click (en botones, enlaces), input (en ídem) y submit (en form)
-
-// SECCIÓN DE ACCIONES AL CARGAR LA PÁGINA
-// Este código se ejecutará cuando se carga la página
-// Lo más común es:
-//   - Pedir datos al servidor
-//   - Pintar (render) elementos en la página
+closeCartBtn.addEventListener("click", () => {
+  cartSideBar.hidden = true;
+});
 
 console.log("Página y JS cargados!");

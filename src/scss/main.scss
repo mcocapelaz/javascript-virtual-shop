@@ -75,8 +75,10 @@ body {
 }
 
 .main {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
   padding: 32px;
-  position: relative;
 }
 
 .products {
@@ -129,11 +131,10 @@ body {
 }
 
 .cart {
-  position: fixed;
   top: 0;
   right: 0;
   width: 320px;
-  height: 100%;
+  height: fit-content;
   background-color: white;
   box-shadow: -4px 0 16px rgba(0, 0, 0, 0.2);
   padding: 24px;
