@@ -8,9 +8,17 @@ const productList = document.getElementById("product-list");
 const cartSideBar = document.getElementById("cart");
 const closeCartBtn = document.getElementById("close-cart");
 const clearCartBtn = document.getElementById("clear-cart");
+const checkOutSummary = document.getElementById("checkout-summary");
+const summaryList = document.getElementById("summary-list");
+const confirmOrderBtn = document.getElementById("confirm-order-btn");
+const backBtn = document.getElementById("back-btn");
+const checkOutBtn = document.getElementById("checkout-btn");
+const summaryTotal= document.getElementById("summary-total");
+const cartTotal= document.getElementById ("cart-total");
 
 let cart = [];
 let allProducts = [];
+
 
 // API CALL
 
@@ -97,13 +105,13 @@ function renderCart() {
     const cartItem = document.createElement("li");
     cartItem.classList.add("cart__item");
     cartItem.innerHTML = `
-<p>${item.title} - ${item.price} €</p>
+<p>${item.title} ${item.price} €</p>
 <button onclick="removeFromCart(${index})">X</button>
 `;
     cartList.appendChild(cartItem);
     total += item.price;
   });
-  totalElement.innerText = total.toFixed(2);
+ cartTotal.innerText = total.toFixed(2);
 }
 
 // REMOVE ITEMS FROM CART
@@ -117,19 +125,41 @@ function removeFromCart(index) {
 // CLEAR CART
 
 function clearCart() {
-  cart.length= 0;
-  renderCart();   
+  cart.length = 0;
+  renderCart();
 }
 
+// SHOW CHECKOUT
 
-// CHECKOUT
+function showCheckout() {
+  let total= 0; 
+  productList.hidden = true;
+  checkOutSummary.hidden = false;
+  summaryList.innerHTML = "";
+
+  cart.forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = `${item.title} - ${item.price}€`;
+    total += item.price;
+    summaryList.appendChild(li);    
+  });
+ summaryTotal.innerText = total.toFixed(2);
+}
+
+// BACK TO SHOP BTN
+
+function backToShop() {  
+  productList.hidden = false;
+  checkOutSummary.hidden = true;
+  summaryList.innerHTML="";
+}
 
 //EVENT LISTENERS
 
 searchBtn.addEventListener("click", handleSearch);
 searchInput.addEventListener("input", handleSearch);
 clearCartBtn.addEventListener("click", clearCart);
-
-
+checkOutBtn.addEventListener("click", showCheckout);
+backBtn.addEventListener("click", backToShop);
 
 console.log("Página y JS cargados!");
