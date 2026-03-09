@@ -10,15 +10,14 @@ const closeCartBtn = document.getElementById("close-cart");
 const clearCartBtn = document.getElementById("clear-cart");
 const checkOutSummary = document.getElementById("checkout-summary");
 const summaryList = document.getElementById("summary-list");
-const confirmOrderBtn = document.getElementById("confirm-order-btn");
 const backBtn = document.getElementById("back-btn");
 const checkOutBtn = document.getElementById("checkout-btn");
-const summaryTotal= document.getElementById("summary-total");
-const cartTotal= document.getElementById ("cart-total");
+const summaryTotal = document.getElementById("summary-total");
+const cartTotal = document.getElementById("cart-total");
+const confirmBtn = document.getElementById("confirm-order-btn");
 
 let cart = [];
 let allProducts = [];
-
 
 // API CALL
 
@@ -111,7 +110,7 @@ function renderCart() {
     cartList.appendChild(cartItem);
     total += item.price;
   });
- cartTotal.innerText = total.toFixed(2);
+  cartTotal.innerText = total.toFixed(2);
 }
 
 // REMOVE ITEMS FROM CART
@@ -132,7 +131,7 @@ function clearCart() {
 // SHOW CHECKOUT
 
 function showCheckout() {
-  let total= 0; 
+  let total = 0;
   productList.hidden = true;
   checkOutSummary.hidden = false;
   summaryList.innerHTML = "";
@@ -141,17 +140,28 @@ function showCheckout() {
     const li = document.createElement("li");
     li.textContent = `${item.title} - ${item.price}€`;
     total += item.price;
-    summaryList.appendChild(li);    
+    summaryList.appendChild(li);
   });
- summaryTotal.innerText = total.toFixed(2);
+  summaryTotal.innerText = total.toFixed(2);
+}
+
+// CONFIRM ORDER
+
+function confirmOrder() {
+  alert("Your order is being processed. Thank you for your purchase!");
+  clearCart();
+  setTimeout(() => {
+    checkOutSummary.hidden = true;
+    productList.hidden = false;
+  }, 3000);
 }
 
 // BACK TO SHOP BTN
 
-function backToShop() {  
+function backToShop() {
   productList.hidden = false;
   checkOutSummary.hidden = true;
-  summaryList.innerHTML="";
+  summaryList.innerHTML = "";
 }
 
 //EVENT LISTENERS
@@ -161,5 +171,6 @@ searchInput.addEventListener("input", handleSearch);
 clearCartBtn.addEventListener("click", clearCart);
 checkOutBtn.addEventListener("click", showCheckout);
 backBtn.addEventListener("click", backToShop);
+confirmBtn.addEventListener("click", confirmOrder);
 
 console.log("Página y JS cargados!");

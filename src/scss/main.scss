@@ -47,7 +47,7 @@ body {
   background-color: #fff0f7;
   color: #3d2040;
   outline: none;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.08);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .search__input::placeholder {
@@ -212,7 +212,6 @@ body {
   cursor: pointer;
   font-size: 1rem;
   transition: opacity 0.2s;
-
 }
 
 .cart__checkout {

@@ -6,7 +6,8 @@
     <title>1.N Título</title>
     <link
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
-      rel="stylesheet" />
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./scss/main.scss" />
     <link rel="icon" href="/images/favicon.png" />
   </head>
@@ -24,7 +25,8 @@
           type="text"
           id="search-input"
           class="search__input"
-          placeholder="What do you want to buy today?" />
+          placeholder="What do you want to buy today?"
+        />
         <button id="search-btn" class="search__button">Search</button>
       </div>
     </header>
@@ -32,26 +34,23 @@
     <!-- MAIN -->
 
     <main class="main">
-      <section class="products" id="product-list">    
-        
-      </section>
+      <section class="products" id="product-list"></section>
 
       <section id="checkout-summary" hidden>
         <h2>This is your products list</h2>
         <ul id="summary-list"></ul>
         <p class="cart__total">Total: <span id="summary-total">0 €</span></p>
-        <button id="confirm-order-btn" class="search__button">Confirm
-          order</button>
+        <button id="confirm-order-btn" class="search__button">
+          Confirm order
+        </button>
         <button id="back-btn" class="search__button">Back to shop</button>
-
       </section>
 
       <!-- CART SIDEBAR -->
 
       <aside class="cart" id="cart">
         <h2 class="cart__title">Your cart</h2>
-        <ul class="cart__list" id="cart-list">
-        </ul>
+        <ul class="cart__list" id="cart-list"></ul>
         <button id="clear-cart" class="search__button">Clear cart</button>
 
         <p class="cart__total">Total: <span id="cart-total">0 €</span></p>
