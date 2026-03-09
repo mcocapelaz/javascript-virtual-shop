@@ -6,13 +6,13 @@ const searchBtn = document.getElementById("search-btn");
 const searchInput = document.getElementById("search-input");
 const productList = document.getElementById("product-list");
 const cartSideBar = document.getElementById("cart");
-
 const closeCartBtn = document.getElementById("close-cart");
+const clearCartBtn = document.getElementById("clear-cart");
 
 let cart = [];
 let allProducts = [];
 
-// LLAMAR A LA API
+// API CALL
 
 const fetchProducts = async () => {
   try {
@@ -32,7 +32,7 @@ const fetchProducts = async () => {
 };
 fetchProducts();
 
-// PINTAR PRODUCTOS EN EL HTML
+// PRODUCT CARDS
 
 function renderProducts(products) {
   productList.innerHTML = "";
@@ -57,7 +57,7 @@ function renderProducts(products) {
   });
 }
 
-// BUSCADOR DE PRODUCTOS
+// PRODUCTS SEARCH ENGINE
 
 function filterProducts(query) {
   const filtered = allProducts.filter((product) => {
@@ -73,7 +73,7 @@ function handleSearch() {
   filterProducts(query);
 }
 
-//AÑADIR AL CARRITO
+//ADD ITEMS TO CART
 
 function addToCart(productId) {
   const product = allProducts.find((p) => p.id === productId);
@@ -84,7 +84,7 @@ function addToCart(productId) {
   }
 }
 
-// MOSTRAR CARRITO
+// SHOW CART
 
 function renderCart() {
   const cartList = document.getElementById("cart-list");
@@ -106,7 +106,7 @@ function renderCart() {
   totalElement.innerText = total.toFixed(2);
 }
 
-// ELIMINAR ITEMS DEL CARRITO
+// REMOVE ITEMS FROM CART
 
 function removeFromCart(index) {
   cart.splice(index, 1);
@@ -114,13 +114,22 @@ function removeFromCart(index) {
   console.log("Item removed. Cart updated");
 }
 
+// CLEAR CART
+
+function clearCart() {
+  cart.length= 0;
+  renderCart();   
+}
+
+
+// CHECKOUT
+
 //EVENT LISTENERS
 
 searchBtn.addEventListener("click", handleSearch);
 searchInput.addEventListener("input", handleSearch);
+clearCartBtn.addEventListener("click", clearCart);
 
-closeCartBtn.addEventListener("click", () => {
-  cartSideBar.hidden = true;
-});
+
 
 console.log("Página y JS cargados!");

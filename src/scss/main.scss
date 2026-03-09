@@ -7,7 +7,7 @@
 
 body {
   font-family: "Roboto", Arial, sans-serif;
-  background-color: #ebe4f2;
+  background-color: #e0dde2;
   color: #3d2040;
 }
 
@@ -16,7 +16,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(135deg, #c084d4, #f0a0c0);
+  background: linear-gradient(135deg, #742a8c, #290f19);
   color: white;
   padding: 20px 40px;
   gap: 16px;
@@ -201,6 +201,18 @@ body {
   font-weight: bold;
   color: #3d2040;
   text-align: right;
+}
+
+.cart__clear {
+  background: linear-gradient(135deg, #460a5a, #f0a0c0);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: opacity 0.2s;
+
 }
 
 .cart__checkout {
