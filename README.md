@@ -1,40 +1,71 @@
-# Mi proyecto
+# Online Gift Shop
 
-A rellenar
+A functional e-commerce application built with **Vanilla JavaScript**. This project interacts with a real API to manage a complete shopping flow, from product discovery to order confirmation.
 
-## Guía de inicio rápido
+## Features
 
-> **NOTA:** Necesitas tener instalado [Node JS](https://nodejs.org/) con una versión superior a la 14 para trabajar con este Starter Kit:
+* **Dynamic Loading:** Fetches real-time product data from the [FakeStoreAPI](https://fakestoreapi.com/).
+* **Live Search Engine:** Integrated filtering system to find products by title as you type.
+* **Cart Management:**
+    * Add and remove items dynamically.
+    * Real-time total price calculation.
+    * Bulk clear functionality.
+* **Visual Feedback:** Product cards change state (`card__selected`) when an item is already in the cart.
+* **Checkout Process:**
+    * Detailed order summary view.
+    * Purchase confirmation simulation with automatic redirection.
+* **Modern UI:** Clean and responsive interface styled with SCSS, featuring gradients and smooth transitions.
 
-### Pasos a seguir cada vez que queremos arrancar un proyecto desde cero:
+## Tech Stack
 
-1. **Crea tu propio repositorio.**
-1. Descarga este **Starter kit desde GitHub**.
-   - No recomendamos que clones este repo ya que no podrás añadir commits.
-1. **Copia todos los ficheros** de este Starter kit en la carpeta raíz de tu repositorio.
-   - Recuerda que debes copiar **también los ficheros ocultos** que comienzan por un punto.
-   - Si has decidido clonar este repo, no debes copiar la carpeta `.git`. Si lo haces estarás machacando tu propio repositorio.
-1. **Abre una terminal** en la carpeta raíz de tu repositorio.
-1. **Instala las dependencias** locales ejecutando en la terminal el comando:
+* **HTML5:** Semantic structure.
+* **CSS3 / SCSS:** Advanced styling, Flexbox, and CSS Grid.
+* **JavaScript (ES6+):**
+    * Asynchronous programming (`fetch`, `async/await`).
+    * DOM Manipulation and Event Listeners.
+    * Advanced Array Methods (`filter`, `forEach`, `find`, `splice`).
+* **Time Management:** Use of `setTimeout` for UI flow control.
 
-```bash
-npm install
+## Project Structure
+
+```text
+├── index.html          # Main HTML structure
+├── js/
+│   └── main.js         # Application logic and state management
+├── scss/
+│   └── main.scss       # Design system and styling
+└── images/             # Static assets
+
 ```
 
-### Pasos para arrancar el proyecto:
+## Setup and Installation
 
-Una vez hemos instalado las dependencias, vamos a arrancar el proyecto. **El proyecto hay que arrancarlo cada vez que te pongas a programar.** Para ello ejecuta el comando:
-
-```bash
-npm run dev
+1. Clone the repository:
+```
+   git clone https://github.com/mcocapelaz/online-gift-shop.git
 ```
 
-Este comando:
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-- **Abre una ventana de Chrome y muestra tu página web**, al igual que hace el plugin de VS Code Live Server (Go live).
-- También **observa** todos los ficheros que hay dentro de la carpeta `src/`, para que cada vez que modifiques un fichero **refresca tu página en Chrome**.
-- También **procesa los ficheros** HTML, SASS / CSS y JS. Por ejemplo:
-  - Convierte los ficheros SASS en CSS.
-  - Combina los diferentes ficheros de HTML y los agrupa en uno o varios ficheros HTML.
+4. Start the development server:
+   ```
+   npm run dev
+   ```
 
-Después de ejecutar `npm run dev` ya puedes empezar a editar todos los ficheros que están dentro de la carpeta `src/` y programar cómodamente.
+Open index.html in your browser or use the Live Server extension in VS Code.
+
+## Key Learnings
+- This project focuses on core JavaScript concepts:
+
+- State Persistence: Using array.length = 0 to efficiently empty the cart while maintaining memory references.
+
+- SPA Logic: Simulating page navigation by toggling the hidden attribute.
+
+- UI/UX Best Practices: Providing immediate visual feedback when an item is added and using timers to guide the user back to the shop after a purchase.
+
+## Author 
+
+Mónica Coca (mcocapelaz) 
