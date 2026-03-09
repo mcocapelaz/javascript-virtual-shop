@@ -139,6 +139,11 @@ body {
   opacity: 0.85;
 }
 
+.card__selected {  
+  background-color: #fce8f7;
+  border: 2px solid #a855c8;
+}
+
 /* ---- CART ---- */
 .cart {
   background-color: white;
